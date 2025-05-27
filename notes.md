@@ -1,6 +1,8 @@
-# Apache Beam
+# Apache Beam - GSoC 2025
 
-## Documentation on how to do things
+This repository contains my notes and plans for the GSoC 2025 project with Apache Beam.
+
+## Documentation on how to contribute
 
 - https://github.com/apache/beam/blob/master/CONTRIBUTING.md
 
@@ -9,12 +11,11 @@
 - Mailing list: Dev and Users mailing lists are used for discussions, questions, and announcements. It is the primary communication channel. I should write when a milestone is reached.
 - Google meet chat: A chat exists on Google Meet, but it is not used much.
 
-# Apache Beam - GSoC 2025
-
 ## Technologies
 
 In my project I will use:
 
+- python
 - terraform
 - gcp
 - gradle
