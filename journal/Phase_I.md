@@ -27,3 +27,12 @@ terraform apply plan.out
 ### PR permissions : 2025-05-30
 
 - The commiter role is a role obtained from modifying the editor role, deleting every permission that contains the word "delete" in it.
+
+## Stale Cleaner : 2025-06-02
+
+- Implemented a stale cleaner runner on my personal server to test it.
+
+## Stale Cleaner : 2025-06-03
+
+- Found the prefixes of the stale Pubsub topics, added them to the cleaner to focus on those topics. [branch](https://github.com/ksobrenat32/beam/tree/stale_claner_implement)
+
