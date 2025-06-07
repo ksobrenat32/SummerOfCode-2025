@@ -36,3 +36,6 @@ terraform apply plan.out
 
 - Found the prefixes of the stale Pubsub topics, added them to the cleaner to focus on those topics. [branch](https://github.com/ksobrenat32/beam/tree/stale_claner_implement)
 
+### PR permissions : 2025-06-06
+
+- Mapped the users and roles that exist in the GCP project to their roles in the terraform code.
