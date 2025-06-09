@@ -39,3 +39,7 @@ terraform apply plan.out
 ### PR permissions : 2025-06-06
 
 - Mapped the users and roles that exist in the GCP project to their roles in the terraform code.
+
+### PR permissions : 2025-06-09
+
+- Created custom roles.
