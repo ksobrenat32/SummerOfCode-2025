@@ -85,6 +85,15 @@ The goal of this project is to make the Beam infrastructure fully stateless and 
 - Integrate the cleanup scripts into the infrastructure as code (IaC) process.
 - Create a monitoring/reporting system to track the state of the infrastructure, orphaned resources, and other leaks.
 
+### 5. Automated security monitoring and policy violation detection (Python, Terraform)
+
+- **Ingest audit logs and create alerts:** Ingesting the audit logs and analysing them we can classify them in search of suspicious ones, triggering an alert. This can go to the audit log of GCP or even to the OpenTelemetry collector. This can be done with python.
+
+The monitoring/logging tool follows the logic:
+- An application generates logs.
+- The logs are ingested to GCP. If native logs are implemented, great. Else, implement logs to GCP using Terraform, mainly for the audit logs. (This could also be done with OpenTelemetry).
+- Configure automatic alerts inside GCP logging for any unusual log.
+
 ## GSoC 2025 Work Plan
 
 This plan outlines the work for the GSoC 2025 project with Apache Beam, covering roughly 12 weeks from early June to the final evaluation on August 25th, 2025.
@@ -187,6 +196,7 @@ This plan outlines the work for the GSoC 2025 project with Apache Beam, covering
             *   Integrate GCP Resource Cleaner with IaC (Terraform triggering/managing cleaner).
             *   Implement/test label-based auto-delete policies.
             *   Create monitoring/reporting (scripts/basic dashboards for infrastructure state, orphaned resources, leaks).
+            *   Implement automated security monitoring by ingesting audit logs, creating alerts for suspicious activity, and using Python for analysis.
         *   **Final Testing:** End-to-end testing of all deliverables.
         *   **Documentation:** Complete all project documentation.
         *   **Project Showcase:** Prepare final GSoC presentation/report.
