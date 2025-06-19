@@ -43,3 +43,24 @@ terraform apply plan.out
 ### PR permissions : 2025-06-09
 
 - Created custom roles.
+
+### PR permissions : 2025-06-11
+
+- Created admin custom role.
+
+### PR permissions : 2025-06-12
+
+- Fixed roles just using supported permissions.
+- Separated the roles to be in layers to avoid duplication.
+
+### PR permissions : 2025-06-16
+
+- Sort the permissions in the roles.
+- Made the admin role include secret manager permissions.
+- Migrate users to the new roles.
+
+### PR permissions : 2025-06-18
+
+- Fix some roles assignments.
+- Added the license to the files that required it.
+
