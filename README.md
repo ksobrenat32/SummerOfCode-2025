@@ -116,35 +116,25 @@ This plan outlines the work for the GSoC 2025 project with Apache Beam, covering
 
 **Detailed Breakdown - Phase 1:**
 
-*   **Weeks 1-2: GCP Resource Cleaner & Initial Stateless Infrastructure Steps**
-    *   **Goal:** Finalize GCP Resource Cleaner tool and its automation. Start connecting this to stateless infrastructure goals.
-    *   **Tasks:**
-        *   **GCP Resource Cleaner (Python):**
-            *   Solidify Python script: list resources, check creation/usage, identify stale, delete via GCP APIs.
-            *   Create/finalize configuration file (resources to check, staleness criteria).
-            *   Implement/test GitHub Action for scheduled execution.
-        *   **Stateless Infrastructure (Terraform):**
-            *   Research/document enforcing auto-delete policies via labels/tags.
-            *   Draft initial Terraform configurations for these policies.
-    *   **Milestone 1 (End of Week 2 - e.g., by June 14):**
-        *   Functional and automated GCP Resource Cleaner.
-        *   Documented strategy & initial Terraform for label-based auto-delete.
-        *   *Consider mailing list update.*
+*   **Weeks 1-3 (Approx. June 1 - June 21): Foundational Work & Progress Adjustment**
+    *   **Note:** Plan adjusted due to sickness. Progress was focused on core Terraform for access control and initial work on the resource cleaner.
+    *   **Completed Tasks:**
+        *   **GCP Access Control (Terraform):** Mapped users and created a robust, layered custom role structure (Admin, Infra Manager, Committer, Viewer). Waiting for feedback on the PR.
+        *   **GCP Resource Cleaner (Python):** Developed and tested an initial version of the script, identifying specific stale resources. Waiting for feedback on the initial implementation.
+    *   **Goal for Remainder of Phase 1 (by July 12):**
+        1.  Finalize and automate the GCP Resource Cleaner.
+        2.  Implement the PR-based workflow for GCP Access Control.
+        3.  Initiate work on Stateless Infrastructure.
 
-*   **Weeks 3-6: GCP Access Control through Git (Core Implementation)**
-    *   **Goal:** Get fundamental system for managing GCP access via Git PRs operational.
+*   **Weeks 4-6 (Approx. June 22 - July 12): Core Implementation & Automation**
+    *   **Goal:** Complete the primary goals for Phase 1.
     *   **Tasks:**
-        *   **Python Script:** Develop script to parse PRs (requester, resources, access level, justification).
-        *   **Terraform:** Design modules/configs for GCP IAM, driven by structured input (e.g., TFvars, JSON).
-        *   **Integration Logic:** Mechanism for Python script (on PR merge) to update Terraform input.
-        *   **Git & GitHub Actions:**
-            *   Repo structure for access control file.
-            *   Actions: Trigger Python script on merge; notify committers on PR creation; notify user on grant/deny.
-        *   **GCP APIs:** Integrate for managing access as defined by Terraform.
-        *   **Gradle (Optional):** Begin setup for Python script build/deploy.
-    *   **Milestone 2 (End of Week 6 - e.g., by July 12, before Midterm):**
-        *   Core GCP Access Control operational: PRs -> automated Terraform updates -> GCP access changes.
-        *   Basic notifications for PR creation/status.
+        *   **GCP Resource Cleaner:** Finalize script, create configuration file, and set up scheduled execution with a GitHub Action.
+        *   **GCP Access Control:** Develop the Python script for PR parsing and the GitHub Actions to automate the workflow (triggering Terraform, sending notifications).
+        *   **Stateless Infrastructure:** Research and draft initial Terraform configurations for label-based auto-delete policies.
+    *   **Milestone (by July 12, before Midterm):**
+        *   Functional and automated GCP Resource Cleaner.
+        *   Core GCP Access Control operational: PRs trigger automated Terraform updates and notifications.
         *   *Prepare demo/summary for midterm evaluation.*
 
 **Midterm Evaluation: 2025-07-14**
