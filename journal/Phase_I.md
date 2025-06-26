@@ -64,3 +64,23 @@ terraform apply plan.out
 - Fix some roles assignments.
 - Added the license to the files that required it.
 
+## PR permissions : 2025-06-23
+
+- Fix headers of auto-generated files.
+- Add testing to the roles generation.
+- Add historic of the roles.
+
+## PR permissions : 2025-06-24
+
+- Make the export users sciript more robust.
+- Add a general README to the stale cleaner.
+- Move terraform state to a bucket.
+
+## Stale Cleaner : 2025-06-25
+
+Setup a github action to run the stale cleaner on a schedule. The action will run every 6 hours and will delete stale resources that are older than 1 day.
+
+## Stale Cleaner : 2025-06-26
+
+- Moved the github action to an existing gradle script.
+
