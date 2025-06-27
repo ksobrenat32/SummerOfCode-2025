@@ -77,7 +77,7 @@ The goal of this project is to create a process for key rotation that is automat
 
 ### 4. Stateless Infrastructure (Terraform):
 
-Right now most of the Beam infrastructure is stateless and managed with things like terraform, Jenkins, and Kubernetes. However, some parts of the infrastructure are still stateful, or need manual intervention, like cleanup scripts that are fragmented throughout the codebase. We are also missing a monitoring/reporting system to track the state of the infrastructure, orphaned resources, and other leaks.
+Currently, the infrastructure is manually created using 'clickops'. The goal of this project is to migrate all stateless components (i.e., resources that do not persist data, like compute instances) to an Infrastructure as Code (IaC) model using Terraform. Stateful components, such as databases, storage buckets, and Pub/Sub topics, will remain under manual management for now.
 
 The goal of this project is to make the Beam infrastructure fully stateless and automated. This will involve:
 
@@ -131,7 +131,10 @@ This plan outlines the work for the GSoC 2025 project with Apache Beam, covering
     *   **Tasks:**
         *   **GCP Resource Cleaner:** Finalize script, create configuration file, and set up scheduled execution with a GitHub Action.
         *   **GCP Access Control:** Develop the Python script for PR parsing and the GitHub Actions to automate the workflow (triggering Terraform, sending notifications).
-        *   **Stateless Infrastructure:** Research and draft initial Terraform configurations for label-based auto-delete policies.
+        *   **Stateless Infrastructure (Terraform):**
+            *   Identify and document existing stateless resources created via 'clickops'.
+            *   Begin migrating identified stateless resources to Terraform.
+            *   Research and draft initial Terraform configurations for label-based auto-delete policies.
     *   **Milestone (by July 12, before Midterm):**
         *   Functional and automated GCP Resource Cleaner.
         *   Core GCP Access Control operational: PRs trigger automated Terraform updates and notifications.
