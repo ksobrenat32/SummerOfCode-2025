@@ -84,3 +84,11 @@ Setup a github action to run the stale cleaner on a schedule. The action will ru
 
 - Moved the github action to an existing gradle script.
 
+## Stale Cleaner : 2025-07-01
+
+- Noticed that the stale cleaner was not deleting the resources, it was only marking them as stale. Fixed the issue by disabling the dry run mode in the cleaner. Waiting for approval to run the cleaner on the production environment.
+
+## Stale Cleaner : 2025-07-02
+
+- Quick fix, the deleting function had a problem in the logic. Solved and PR created.
+
