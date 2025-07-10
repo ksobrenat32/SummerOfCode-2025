@@ -84,6 +84,10 @@ Setup a github action to run the stale cleaner on a schedule. The action will ru
 
 - Moved the github action to an existing gradle script.
 
+## Key Rotation : 2025-06-30
+
+- Initial key rotation implementation.
+
 ## Stale Cleaner : 2025-07-01
 
 - Noticed that the stale cleaner was not deleting the resources, it was only marking them as stale. Fixed the issue by disabling the dry run mode in the cleaner. Waiting for approval to run the cleaner on the production environment.
@@ -92,3 +96,22 @@ Setup a github action to run the stale cleaner on a schedule. The action will ru
 
 - Quick fix, the deleting function had a problem in the logic. Solved and PR created.
 
+
+## Key Rotation : 2025-07-03
+
+- Add the disable keys function to the key rotation script.
+- Implement a filter to keep n keys enabled.
+- Add tests to the key rotation script.
+
+## Key Rotation : 2025-07-04
+
+- Add requirements and license to the key rotation script.
+
+## Key Rotation : 2025-07-07
+
+- Talk with the mentor about the key rotation script, he suggested to control everything inside the script, including the key rotation schedule. This will be done in the next phase. Add logs to the key rotation script. Authentication for the key rotation script will be done through each service.
+
+## Stale Cleaner : 2025-07-09
+
+- Add new prefixes to the stale cleaner.
+- Implement a cleaner for stale pubsub subscriptions that do not have a topic.
