@@ -115,3 +115,51 @@ Setup a github action to run the stale cleaner on a schedule. The action will ru
 
 - Add new prefixes to the stale cleaner.
 - Implement a cleaner for stale pubsub subscriptions that do not have a topic.
+
+## GCP Access Terraform : 2025-07-25
+
+- Add Terraform configuration and IAM management scripts for GCP project. The idea is to setup the users and permissions for the GCP project using Terraform, allowing for easier management and automation of the infrastructure.
+- Created infrastructure files including main.tf, users.tf, and configuration variables.
+- Added Python script to generate user configurations based on current users.
+
+## GCP Access Terraform : 2025-07-26
+
+- Add GitHub Actions workflow to manage GCP User Roles with Terraform automatically.
+
+## Key Rotation / Secret Service : 2025-07-25
+
+- Add ServiceAccountManager class for managing Google Cloud service accounts and keys.
+
+## Key Rotation / Secret Service : 2025-07-27
+
+- Add unit tests for ServiceAccountManager.
+
+## Key Rotation / Secret Service : 2025-07-28
+
+- Add methods to retrieve and delete oldest service account keys in ServiceAccountManager.
+
+## GCP Access Terraform : 2025-07-29
+
+- Move files to infra/iam directory for better organization.
+
+## Key Rotation / Secret Service : 2025-07-29
+
+- Enhance ServiceAccountManager with improved error handling and key management features.
+- Added detailed exception handling for key deletion operations.
+- Implemented a method to delete the oldest service account keys, allowing for better key management.
+- Updated unit tests to include integration tests for full service account lifecycle.
+- Added retry logic for key validation to handle propagation delays.
+
+## Key Rotation / Secret Service : 2025-07-30
+
+- Move to other directory name for better organization.
+- Refactor ServiceAccountManager to use injected logger for improved logging consistency and add unit tests for ServiceAccountManager functionality.
+- Add logging to secret service, save the log file on the gcp bucket.
+- Improved typing in the codebase.
+- Remove one time only configuration from class.
+
+## GCP Access Terraform : 2025-07-30
+
+- Update project variables and migrate infrastructure.
+- Discourage the use of generate.py script in favor of more automated approaches.
+- Update readme after migration to reflect new structure and processes.
