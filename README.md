@@ -94,110 +94,145 @@ The monitoring/logging tool follows the logic:
 - The logs are ingested to GCP. If native logs are implemented, great. Else, implement logs to GCP using Terraform, mainly for the audit logs. (This could also be done with OpenTelemetry).
 - Configure automatic alerts inside GCP logging for any unusual log.
 
-## GSoC 2025 Work Plan
+## GSoC 2025 Work Plan (REVISED - July 31st)
 
-This plan outlines the work for the GSoC 2025 project with Apache Beam, covering roughly 12 weeks from early June to the final evaluation on August 25th, 2025.
+**REVISED PLAN:** Adjusted to account for actual progress and remaining timeline (25 days to final evaluation).
+
+**Current Status (July 31st):**
+- **GCP Resource Cleaner:** ✅ **COMPLETED** - Functional, automated, GitHub Actions integrated
+- **GCP Access Control:** ✅ **LARGELY COMPLETED** - Terraform roles structure done, automated workflow implemented
+- **Key Rotation:** 🟡 **IN PROGRESS** - ServiceAccountManager implemented, needs automation
+- **Stateless Infrastructure:** 🟡 **PARTIALLY STARTED** - Some Terraform migration done
+- **Security Monitoring:** ❌ **NOT STARTED**
 
 **Assumptions:**
-*   Start Date: Approx. June 1st, 2025
-*   Midterm Evaluation: July 14th, 2025
-*   Final Evaluation: August 25th, 2025
-*   Time Commitment: Full-time, with flexibility.
+*   Current Date: July 31st, 2025
+*   Final Evaluation: August 25th, 2025 (25 days remaining)
+*   Time Commitment: Intensive focus on remaining deliverables
 
 ---
 
-### Phase 1: Foundation & Core Access Control (Weeks 1-6: Approx. June 1 - July 12)
+### REVISED Phase 2: Completion Sprint (Aug 1-25, 2025)
 
-*   **Primary Focus:**
-    1.  Complete the GCP Resource Cleaner.
-    2.  Implement core functionality for GCP Access Control through Git.
-*   **Secondary Focus:**
-    *   Begin groundwork for Stateless Infrastructure, linking with the Resource Cleaner.
-
-**Detailed Breakdown - Phase 1:**
-
-*   **Weeks 1-3 (Approx. June 1 - June 21): Foundational Work & Progress Adjustment**
-    *   **Note:** Plan adjusted due to sickness. Progress was focused on core Terraform for access control and initial work on the resource cleaner.
-    *   **Completed Tasks:**
-        *   **GCP Access Control (Terraform):** Mapped users and created a robust, layered custom role structure (Admin, Infra Manager, Committer, Viewer). Waiting for feedback on the PR.
-        *   **GCP Resource Cleaner (Python):** Developed and tested an initial version of the script, identifying specific stale resources. Waiting for feedback on the initial implementation.
-    *   **Goal for Remainder of Phase 1 (by July 12):**
-        1.  Finalize and automate the GCP Resource Cleaner.
-        2.  Implement the PR-based workflow for GCP Access Control.
-        3.  Initiate work on Stateless Infrastructure.
-
-*   **Weeks 4-6 (Approx. June 22 - July 12): Core Implementation & Automation**
-    *   **Goal:** Complete the primary goals for Phase 1.
-    *   **Tasks:**
-        *   **GCP Resource Cleaner:** Finalize script, create configuration file, and set up scheduled execution with a GitHub Action.
-        *   **GCP Access Control:** Develop the Python script for PR parsing and the GitHub Actions to automate the workflow (triggering Terraform, sending notifications).
-        *   **Stateless Infrastructure (Terraform):**
-            *   Identify and document existing stateless resources created via 'clickops'.
-            *   Begin migrating identified stateless resources to Terraform.
-            *   Research and draft initial Terraform configurations for label-based auto-delete policies.
-    *   **Milestone (by July 12, before Midterm):**
-        *   Functional and automated GCP Resource Cleaner.
-        *   Core GCP Access Control operational: PRs trigger automated Terraform updates and notifications.
-        *   *Prepare demo/summary for midterm evaluation.*
-
-**Midterm Evaluation: 2025-07-14**
-*   Present progress: GCP Resource Cleaner, GCP Access Control.
-*   Demonstrate functionalities.
-*   Discuss challenges, learnings, refined plan for Phase 2.
+**Strategic Approach:** Focus on completing all promised deliverables with MVP implementations where necessary.
 
 ---
 
-### Phase 2: Enhancements, Key Rotation & Full Stateless Vision (Weeks 7-12: Approx. July 15 - August 23)
+#### Week 1 (Aug 1-7): Key Rotation Completion & Documentation
+**PRIORITY 1: Complete Key Rotation System**
+*   **Days 1-3 (Aug 1-3):**
+    *   Finalize ServiceAccountManager with all required features
+    *   Create configuration system for rotation schedules
+    *   Implement GitHub Actions for scheduled key rotation
+    *   Add secure key distribution mechanism
+*   **Days 4-5 (Aug 4-5):**
+    *   Integration testing of key rotation system
+    *   Documentation for key rotation
+*   **Days 6-7 (Aug 6-7):**
+    *   GCP Access Control final refinements
+    *   Complete any remaining Gradle integration
 
-*   **Primary Focus:**
-    1.  Enhance/finalize GCP Access Control.
-    2.  Implement Key Rotation.
-    3.  Advance Stateless Infrastructure goals, including monitoring.
-*   **Secondary Focus:**
-    *   Thorough documentation and testing.
+**Milestone 1 (Aug 7):** Key Rotation fully operational with automation
 
-**Detailed Breakdown - Phase 2:**
+---
 
-*   **Weeks 7-8: GCP Access Control (Refinements & Completion)**
-    *   **Goal:** Robust, fully featured, well-documented Access Control system.
-    *   **Tasks:**
-        *   **Gradle:** Fully integrate for Python script build/deploy (if not done).
-        *   **GitHub Actions:** Implement remaining notifications (e.g., access revocation).
-        *   **Terraform:** Refine for different roles, complex permissions.
-        *   **Testing:** Thorough testing of various requests, edge cases, failures.
-        *   **Documentation:** User and maintainer docs for access control.
-    *   **Milestone 3 (End of Week 8 - e.g., by July 26):**
-        *   Feature-complete GCP Access Control (all notifications, Gradle build).
-        *   Robustly tested and documented.
+#### Week 2 (Aug 8-14): Stateless Infrastructure & Integration
+**PRIORITY 2: Stateless Infrastructure Foundation**
+*   **Days 1-4 (Aug 8-11):**
+    *   Complete migration of remaining stateless resources to Terraform
+    *   Implement label-based auto-delete policies
+    *   Integrate Resource Cleaner with IaC processes
+*   **Days 5-7 (Aug 12-14):**
+    *   Create basic monitoring/reporting system for infrastructure state
+    *   Implement orphaned resource detection
+    *   Test integration between all components
 
-*   **Weeks 9-10: Key Rotation for GCP Services**
-    *   **Goal:** Automate GCP service key rotation.
-    *   **Tasks:**
-        *   **Python Script:** Generate new keys (GCP APIs), secure management/distribution.
-        *   **Configuration:** File for services needing rotation & frequency.
-        *   **GCP APIs:** Utilize for service account key management.
-        *   **GitHub Actions:** Scheduled script execution; notify team on success/failure (securely provide new keys).
-    *   **Milestone 4 (End of Week 10 - e.g., by August 9):**
-        *   Automated key rotation operational.
-        *   Secure notification system for key events.
-        *   *Consider mailing list update.*
+**Milestone 2 (Aug 14):** Stateless Infrastructure operational with monitoring
 
-*   **Weeks 11-12: Stateless Infrastructure (Consolidation & Monitoring) & Final Wrap-up**
-    *   **Goal:** Integrate components, advance stateless vision, prepare for final evaluation.
-    *   **Tasks:**
-        *   **Stateless Infrastructure (Terraform):**
-            *   Integrate GCP Resource Cleaner with IaC (Terraform triggering/managing cleaner).
-            *   Implement/test label-based auto-delete policies.
-            *   Create monitoring/reporting (scripts/basic dashboards for infrastructure state, orphaned resources, leaks).
-            *   Implement automated security monitoring by ingesting audit logs, creating alerts for suspicious activity, and using Python for analysis.
-        *   **Final Testing:** End-to-end testing of all deliverables.
-        *   **Documentation:** Complete all project documentation.
-        *   **Project Showcase:** Prepare final GSoC presentation/report.
-    *   **Milestone 5 (End of Week 12 - e.g., by August 23):**
-        *   All GSoC goals met.
-        *   Cleaner integrated with IaC; key rotation automated; access control functional.
-        *   Basic monitoring/reporting in place.
-        *   Comprehensive documentation & final submission ready.
+---
+
+#### Week 3 (Aug 15-21): Security Monitoring & Testing
+**PRIORITY 3: Security Monitoring (Simplified Implementation)**
+*   **Days 1-3 (Aug 15-17):**
+    *   Implement audit log ingestion using Python
+    *   Create basic alert system for suspicious activities
+    *   Set up GCP logging configuration via Terraform
+*   **Days 4-5 (Aug 18-19):**
+    *   End-to-end testing of all systems
+    *   Performance and reliability testing
+*   **Days 6-7 (Aug 20-21):**
+    *   Bug fixes and optimization
+    *   Integration testing between all components
+
+**Milestone 3 (Aug 21):** All core systems functional and integrated
+
+---
+
+#### Week 4 (Aug 22-25): Final Documentation & Evaluation Prep
+**PRIORITY 4: Documentation & Final Evaluation**
+*   **Days 1-2 (Aug 22-23):**
+    *   Complete comprehensive documentation for all components
+    *   Create user guides and deployment instructions
+    *   Prepare project showcase materials
+*   **Day 3 (Aug 24):**
+    *   Final testing and validation
+    *   Prepare final GSoC presentation
+    *   Submit final evaluation materials
+*   **Day 4 (Aug 25):**
+    *   **Final Evaluation Due**
+
+---
+
+### Deliverable Coverage Strategy
+
+**1. GCP Resource Cleaner** ✅ **COMPLETED**
+- Automated stale resource detection and cleanup
+- GitHub Actions integration
+- Configuration-based management
+
+**2. GCP Access Control** ✅ **COMPLETED**
+- Terraform-based role management
+- Automated PR workflow
+- Custom role hierarchy (Admin, Committer, Viewer)
+
+**3. Key Rotation** 🎯 **COMPLETE BY AUG 7**
+- ServiceAccountManager for key lifecycle
+- Automated rotation scheduling
+- Secure key distribution
+- Configuration-driven rotation policies
+
+**4. Stateless Infrastructure** 🎯 **COMPLETE BY AUG 14**
+- Migration of stateless resources to Terraform
+- Label-based auto-delete policies
+- Basic monitoring and reporting
+- Integration with Resource Cleaner
+
+**5. Security Monitoring** 🎯 **MVP BY AUG 17**
+- **Simplified Implementation:**
+  - Basic audit log ingestion
+  - Alert system for suspicious activities
+  - Python-based log analysis
+  - Terraform configuration for GCP logging
+- **Note:** Full OpenTelemetry integration deferred to post-GSoC
+
+---
+
+### Risk Mitigation
+
+**High Risk Items:**
+1. **Security Monitoring complexity** → Simplified to basic audit log monitoring
+2. **Integration testing time** → Parallel development and continuous testing
+3. **Documentation time** → Documentation created alongside development
+
+**Contingency Plans:**
+- If behind schedule: Focus on core functionality over advanced features
+- Security monitoring can be reduced to basic log alerting if needed
+- Prioritize working demos over perfect implementations
+
+**Success Criteria:**
+- All 5 main deliverables functional by Aug 21st
+- Comprehensive documentation by Aug 24th
+- Successful final evaluation on Aug 25th
 
 **Final Evaluation: 2025-08-25**
 

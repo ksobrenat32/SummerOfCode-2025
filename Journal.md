@@ -1,4 +1,4 @@
-# Phase I journal
+# Journal
 
 ## Useful scripts
 
@@ -163,3 +163,20 @@ Setup a github action to run the stale cleaner on a schedule. The action will ru
 - Update project variables and migrate infrastructure.
 - Discourage the use of generate.py script in favor of more automated approaches.
 - Update readme after migration to reflect new structure and processes.
+
+## Project Planning : 2025-07-31
+
+- **MAJOR PLAN REVISION:** Updated the project plan to realistically cover all promised deliverables in the remaining 25 days.
+- **Status Assessment:** 
+  - ✅ GCP Resource Cleaner: COMPLETED (automated, GitHub Actions integrated)
+  - ✅ GCP Access Control: LARGELY COMPLETED (Terraform roles, automated workflow)
+  - 🟡 Key Rotation: IN PROGRESS (ServiceAccountManager done, needs automation)
+  - 🟡 Stateless Infrastructure: PARTIALLY STARTED (some Terraform migration)
+  - ❌ Security Monitoring: NOT STARTED
+- **Strategic Focus:** Intensive 4-week sprint to complete all deliverables with MVP implementations where necessary.
+- **Risk Mitigation:** Simplified security monitoring to basic audit log alerting to ensure all 5 main topics are covered.
+- **New Timeline:**
+  - Week 1 (Aug 1-7): Complete Key Rotation automation
+  - Week 2 (Aug 8-14): Finish Stateless Infrastructure with monitoring
+  - Week 3 (Aug 15-21): Implement basic Security Monitoring
+  - Week 4 (Aug 22-25): Documentation and final evaluation prep
