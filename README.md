@@ -27,6 +27,16 @@ Just some questions about how the project is going, what I have done, and what I
 - Midterm evaluation: 2025-07-14
 - Final evaluation: 2025-08-25
 
+### Final evaluation
+
+Final submission should include:
+
+- Bullet points summarizing the key features and improvements
+- What code was added or modified and what not, including links to the relevant commits or pull requests
+- Whats left to do
+- Work submission URL is what is linked to the GSoC archive. Put it on a permanent URL, a GitHub gist is a good option.
+- Remember only you know about the project, add context where needed.
+
 ## Topics
 
 ### 1. GCP Resource Cleaner (Python):
