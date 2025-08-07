@@ -180,3 +180,51 @@ Setup a github action to run the stale cleaner on a schedule. The action will ru
   - Week 2 (Aug 8-14): Finish Stateless Infrastructure with monitoring
   - Week 3 (Aug 15-21): Implement basic Security Monitoring
   - Week 4 (Aug 22-25): Documentation and final evaluation prep
+
+## Key Rotation / Secret Service : 2025-08-01
+
+- Add SecretManager implementation and unit tests for secret management functionality.
+- Implement a unified client that manages both secrets and service accounts.
+
+## Key Rotation / Secret Service : 2025-08-02
+
+- SecretManager improved error handling, retry logic, and additional helper methods for secret version management.
+
+## Key Rotation / Secret Service : 2025-08-03
+
+- ServiceAccountManager with timeout handling and additional helper methods for service account management.
+
+## Key Rotation / Secret Service : 2025-08-04
+
+- Add GCSLogHandler and GCPLogger for logging to Google Cloud Storage.
+
+## Key Rotation / Secret Service : 2025-08-05
+
+- Fix GCSLogHandler to handle closed log buffer and prevent errors during log emission.
+- Add key rotation check to SecretManager and add missing unit tests for secret version management.
+- Adding to ServiceAccountManager a retry logic for key creation and service account retrieval; add unit tests for account email normalization and existence checks.
+- Add prefixed log messages to loggers.
+- Ensure at least one key remains before deleting oldest working key.
+- Add a main script and the corresponding readme.
+- Add license information to README and main.py files.
+- Implement allowed users.
+- Add working service account allowed policies.
+- Handle PermissionDenied exceptions and remove manual key rotation option from CLI.
+
+## Key Rotation / Secret Service : 2025-08-06
+
+- Changes to the readme to explain how a normal user would interact.
+- Disable logging when retrieving key as it will be can as a user.
+- Small enhancement on configuration error.
+- Fixed typos.
+
+## Key Rotation / Secret Service : 2025-08-07
+
+- Create a secret manager label to control what to manage.
+- Simplify secret manager class and fixed tests accordingly. By removing some complexity and unused code, the secret manager class is now more maintainable.
+- Added a data_id string to the secret version to easily match a secret version to its data.
+- Implemented a grace period for destroying disabled secret versions.
+- Just allow a single working secret, removing the need for multiple enabled versions.
+- Updated tests to reflect changes in the secret manager class.
+- Deleted delete oldest key method, not used anymore.
+- Implemented grace period.
