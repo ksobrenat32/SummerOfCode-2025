@@ -228,3 +228,41 @@ Setup a github action to run the stale cleaner on a schedule. The action will ru
 - Updated tests to reflect changes in the secret manager class.
 - Deleted delete oldest key method, not used anymore.
 - Implemented grace period.
+
+## GCP Access Terraform : 2025-08-11
+
+- Add IAM policy compliance checker and configuration files.
+- Removed `infra/iam/generate` as it has been assimilated into `iam.py`.
+- Fix typo.
+- Update roles readme.
+- Fixed proposal for custom roles only.
+- Delete unused file.
+- Rename committer to writer.
+
+## GCP Access Terraform : 2025-08-13
+
+- Standardize the keys yaml.
+- Fix error on IAM not found.
+- Add service account keys compliance checker.
+- Improve readme by adding details, formats and Account Keys info.
+
+## Project Planning Update : 2025-08-13
+
+- **WEEK 2 PROGRESS UPDATE:** Mid-week status assessment for Stateless Infrastructure phase.
+- **Updated Status Assessment:** 
+  - ✅ GCP Resource Cleaner: COMPLETED (automated, GitHub Actions integrated)
+  - ✅ GCP Access Control: COMPLETED (Terraform roles, compliance checkers, automated workflow)
+  - ✅ Key Rotation: COMPLETED (Full automation with grace periods, logging, security controls)
+  - 🟡 Stateless Infrastructure: IN PROGRESS (IAM compliance checkers implemented, service account key management added)
+  - ❌ Security Monitoring: NOT STARTED
+- **Week 2 Achievements (Aug 8-13):**
+  - Enhanced GCP Access Control with IAM policy compliance checker
+  - Added service account keys compliance checker
+  - Standardized configuration files and improved documentation
+  - Role naming improvements (committer → writer)
+  - Code consolidation and cleanup
+- **Remaining Week 2 Goals (Aug 14):** 
+  - Complete infrastructure monitoring/reporting system
+  - Finalize orphaned resource detection
+  - Test integration between all components
+- **Timeline Status:** ON TRACK - Week 2 nearly complete, ready to begin Security Monitoring phase.
