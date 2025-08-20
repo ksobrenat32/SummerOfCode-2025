@@ -266,3 +266,37 @@ Setup a github action to run the stale cleaner on a schedule. The action will ru
   - Finalize orphaned resource detection
   - Test integration between all components
 - **Timeline Status:** ON TRACK - Week 2 nearly complete, ready to begin Security Monitoring phase.
+
+## GCP Access Terraform : 2025-08-13
+
+- Standardize the keys yaml.
+- Fix error on IAM not found.
+- Add service account keys compliance checker.
+- Improve readme by adding details, formats and Account Keys info.
+- Modified account keys compliance check class to allow reading an empty keys.yaml.
+- Change the project id to apache beam.
+- Allow service accounts on terraform.
+- Proposed changes to make the policy compliant by updating user permissions and service account roles.
+- Proposed account keys changes to make it compliant, including clearing and re-managing keys.
+
+## GCP Access Terraform : 2025-08-14
+
+- Addressed and resolved issues identified by the AI code assistant.
+
+## Stateless Infrastructure : 2025-08-18
+
+- Implement SendingClient for creating compliance announcements.
+- Added announcement functionality to the AccountKeys and IAM checkers.
+- Integrated SendingClient to print announcements, simplifying the notification process.
+- Added license and restored configuration files.
+
+## Stateless Infrastructure : 2025-08-19
+
+- Created GitHub Actions for infrastructure policy enforcement and service account key management.
+- Standardized GitHub Action workflow filenames and updated documentation.
+- Updated Python version for workflows.
+
+## Security Monitoring : 2025-08-20
+
+- Began implementation of the security monitoring component with the addition of a log analyzer script.
+- Finished implementing the log analyzer script to parse GCP audit logs for suspicious activity even with github action included
