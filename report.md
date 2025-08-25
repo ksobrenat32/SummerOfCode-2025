@@ -71,19 +71,19 @@ The project encompasses five main areas of focus, each contributing to a more ro
 
 ## PR Links
 
-- [ Clean up GCP Resources (Pubsub) #34141 ](https://github.com/apache/beam/pull/34141)
-- [ GCP IAM Custom Roles #35107 ](https://github.com/apache/beam/pull/35107)
-- [ Stale claner implementation #35439 ](https://github.com/apache/beam/pull/35439)
-- [ Set pubsup topic cleaner to run #35500 ](https://github.com/apache/beam/pull/35500)
-- [ Quick fix on deleting pubsub resources #35513 ](https://github.com/apache/beam/pull/35513)
-- [ Secret management service #35524 ](https://github.com/apache/beam/pull/35524)
-- [ Add more Pub/Sub topic prefixes to the topic cleaner #35548 ](https://github.com/apache/beam/pull/35548)
-- [ Stale pubsub subscriptions cleaner #35553 ](https://github.com/apache/beam/pull/35553)
-- [ Add Terraform configuration and IAM management scripts for GCP project #35701 ](https://github.com/apache/beam/pull/35701)
-- [ Add infra policy compliance checkers #35848 ](https://github.com/apache/beam/pull/35848)
-- [ Infra enforcer gha #35910 ](https://github.com/apache/beam/pull/35910)
-- [ Add GitHub Actions workflow for managing GCP Service Account keys #35911 ](https://github.com/apache/beam/pull/35911)
-- [ Add a security GCP log analyzer #35922 ](https://github.com/apache/beam/pull/35922)
+- [ Clean up GCP Resources (Pubsub) #34141 ](https://github.com/apache/beam/pull/34141) : This PR adds a new stale_cleaner.py script that detects, tracks, and deletes unused GCP resources by comparing current and stored states in Cloud Storage, with an initial implementation for Pub/Sub topics.
+- [ GCP IAM Custom Roles #35107 ](https://github.com/apache/beam/pull/35107) : This PR introduces a custom IAM roles framework for Beam’s GCP infrastructure—defining a hierarchy of beam_viewer, beam_writer, beam_infra_manager, and beam_admin roles with detailed documentation and management workflows.
+- [ Stale cleaner implementation #35439 ](https://github.com/apache/beam/pull/35439) : This PR introduces a Gradle runStaleCleaner task (included in cleanupOtherStaleResources) that installs dependencies and runs the Pub/Sub topic stale cleaner as a standalone, timestamped script.
+- [ Set pubsub topic cleaner to run #35500 ](https://github.com/apache/beam/pull/35500) : This PR updates the stale resource cleaner to perform real deletions instead of simulations, ensuring that outdated resources are actually removed. 
+- [ Quick fix on deleting pubsub resources #35513 ](https://github.com/apache/beam/pull/35513) : This PR fixed a typo in the `stale_cleaner.py` tool.
+- [ Secret management service #35524 ](https://github.com/apache/beam/pull/35524) : This PR adds a service account and key management framework in infra/keys, featuring detailed documentation and a YAML-based configuration for key rotation and related policies.
+- [ Add more Pub/Sub topic prefixes to the topic cleaner #35548 ](https://github.com/apache/beam/pull/35548) : This PR broadens the list of resource names that the stale resource cleaner will delete, adding entries. This enhancement improves cleanup coverage by targeting a wider range of stale resources. 
+- [ Stale pubsub subscriptions cleaner #35553 ](https://github.com/apache/beam/pull/35553) : This PR extends the stale resource cleaner to also clean up Pub/Sub subscriptions by adding a PubSubSubscriptionCleaner class and updating the main script to run both topic and subscription cleaners.
+- [ Add Terraform configuration and IAM management scripts for GCP project #35701 ](https://github.com/apache/beam/pull/35701) : This PR delivers a declarative, Terraform-based framework for managing Apache Beam’s GCP IAM user roles via a central users.yml file and automated GitHub Actions workflows.
+- [ Add infra policy compliance checkers #35848 ](https://github.com/apache/beam/pull/35848) : This PR adds a GCP infrastructure enforcement module featuring a Python CLI tool that automates IAM policy and service account key validation, reporting, and remediation based on a centralized YAML configuration and including GitHub integration for automated compliance announcements. 
+- [ Infra enforcer gha #35910 ](https://github.com/apache/beam/pull/35910) : This PR enhances the infrastructure enforcement tools with automated notifications via GitHub issues and email, and integrates them into a scheduled GitHub Actions workflow for regular compliance checks.
+- [ Add GitHub Actions workflow for managing GCP Service Account keys #35911 ](https://github.com/apache/beam/pull/35911) : This PR adds a GitHub Actions workflow to automate Google Cloud service account key creation and rotation, replacing manual or cron‐based processes with scheduled and on-demand runs.
+- [ Add a security GCP log analyzer #35922 ](https://github.com/apache/beam/pull/35922) : This PR adds an automated GCP security logging system that sets up log sinks, analyzes filtered events with a Python script, and sends weekly email reports.
 
 ## Cool Graphs
 
