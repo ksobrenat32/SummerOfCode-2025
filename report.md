@@ -85,3 +85,10 @@ The project encompasses five main areas of focus, each contributing to a more ro
 - [ Add GitHub Actions workflow for managing GCP Service Account keys #35911 ](https://github.com/apache/beam/pull/35911)
 - [ Add a security GCP log analyzer #35922 ](https://github.com/apache/beam/pull/35922)
 
+## Cool Graphs
+
+### Pubsub Topics over Time
+
+![Pubsub Topics over Time](./PubSubTopicNum.png)
+
+This graph shows the number of Pub/Sub topics over time. It can be shown that the number of topics decreased significantly in two points of time, firstly on `2025-07-03` when the GCP resource cleaner was first implemented, and secondly on `2025-07-11` when more topic prefixes were added to the cleaner.
