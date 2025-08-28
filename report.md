@@ -85,10 +85,49 @@ The project encompasses five main areas of focus, each contributing to a more ro
 - [ Add GitHub Actions workflow for managing GCP Service Account keys #35911 ](https://github.com/apache/beam/pull/35911) : This PR adds a GitHub Actions workflow to automate Google Cloud service account key creation and rotation, replacing manual or cron‐based processes with scheduled and on-demand runs.
 - [ Add a security GCP log analyzer #35922 ](https://github.com/apache/beam/pull/35922) : This PR adds an automated GCP security logging system that sets up log sinks, analyzes filtered events with a Python script, and sends weekly email reports.
 
-## Cool Graphs
+## Results
 
-### Pubsub Topics over Time
+The project successfully delivered a suite of tools that automate and enhance the management of Apache Beam's GCP infrastructure. The following sections detail the outcomes and impact of each component.
+
+### GCP Resource Cleaner
 
 ![Pubsub Topics over Time](./PubSubTopicNum.png)
 
-This graph shows the number of Pub/Sub topics over time. It can be shown that the number of topics decreased significantly in two points of time, firstly on `2025-07-03` when the GCP resource cleaner was first implemented, and secondly on `2025-07-11` when more topic prefixes were added to the cleaner.
+The GCP resource cleaner has proven to be an effective tool for managing and reducing the number of unused resources. As shown in the graph, the number of Pub/Sub topics decreased significantly on two key dates:
+- **2025-07-03:** The initial implementation of the cleaner led to the first major drop in topic count.
+- **2025-07-11:** The cleaner's effectiveness was further enhanced by adding more topic prefixes, resulting in another significant reduction.
+
+The tool not only cleans up stale Pub/Sub topics but also addresses unused Pub/Sub subscriptions, contributing to cost savings and improved resource hygiene. Its integration into a scheduled GitHub Action ensures continuous and automated cleanup.
+
+### GCP Access Control
+
+A declarative, Terraform-based framework for managing GCP IAM roles was established, centralizing user permissions in a version-controlled `users.yml` file. This initiative introduced a clear and auditable process for granting access, replacing the previous manual system.
+
+Key results include:
+- **Standardized Roles:** A hierarchy of custom roles (`beam_viewer`, `beam_writer`, `beam_infra_manager`, `beam_admin`) was created to enforce the principle of least privilege.
+- **Automated Workflow:** A GitHub Actions workflow automates the application of IAM changes, ensuring that access requests are reviewed, approved, and provisioned systematically.
+- **Compliance and Auditing:** The new system provides a clear audit trail of who has access to what and why, simplifying compliance and security reviews.
+
+### Service Account Key Management
+
+A comprehensive framework for managing service account keys was developed to enhance security and reduce the risk of key-related vulnerabilities.
+
+- **Automated Key Rotation:** A GitHub Actions workflow now automates the entire lifecycle of service account keys, including creation, rotation, and deletion, based on predefined policies. This replaces manual, error-prone processes.
+- **Compliance Enforcement:** An integrated compliance checker validates service account keys against organizational policies, automatically reporting and flagging non-compliant keys.
+- **Centralized Configuration:** Key management policies are defined in a centralized YAML file, providing a single source of truth for key rotation schedules and rules.
+
+### Infrastructure Enforcement
+
+To ensure the stability and security of the infrastructure, an automated enforcement module was implemented.
+
+- **Policy as Code:** The system uses a Python-based CLI tool to automate the validation of IAM policies and service account configurations against a centralized YAML configuration.
+- **Automated Notifications:** The tool is integrated with GitHub Actions to run scheduled compliance checks and automatically create issues or send email notifications for any detected violations, enabling prompt remediation.
+- **Proactive Compliance:** By integrating these checks into the CI/CD pipeline, the system proactively enforces infrastructure standards and prevents misconfigurations before they are deployed.
+
+### Security Monitoring
+
+An automated security logging and analysis system was established to detect and respond to potential threats within the GCP environment.
+
+- **Log Analysis:** The system automatically configures GCP log sinks to collect relevant audit logs. A Python script then parses these logs to identify suspicious events, such as unauthorized access attempts or unusual administrative actions.
+- **Automated Reporting:** A scheduled GitHub Action runs the analysis and sends weekly email reports summarizing potential security incidents, ensuring that security issues are regularly reviewed by the team.
+- **Foundation for Advanced Security:** This tool provides a solid foundation for a more advanced security monitoring practice, with the potential to integrate with real-time alerting systems and other security tools in the future.
